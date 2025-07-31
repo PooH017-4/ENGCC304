@@ -17,38 +17,38 @@ int main()
         if (N % 2 == 0) 
         {
             for (int i = N; i >= 0; i -= 2) {
-                printf("%d", i);
+                printf("%d ", i);
             }               
         } else {
              for (int i = 1; i <= N; i += 2) {
-                printf("%d", i);
+                printf("%d ", i);
             }
         }
-        printf("\n");
-        return 0; 
+        return 0;
 }
 
+
 ```
 
 ## TEST CASE
 ### Input
 ```bash
 Enter value:
-11
+39
 ```
 ### Output
 ```bash
-Series: 1357911
+Series: 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39
 ```
 
 ## TEST CASE
 ### Input
 ```bash
 Enter value:
-8
+40
 ```
 ### Output
 ```bash
-Series: 86420
+Series: 40 38 36 34 32 30 28 26 24 22 20 18 16 14 12 10 8 6 4 2 0
 ```
 
