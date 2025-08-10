@@ -8,21 +8,36 @@
 ```c
 #include <stdio.h>
 
-int main()
-{
-    int N;
-    printf("Enter number : ");
-    scanf("%d", &N);
-    
-        if (N % 2 == 0) 
-        {
-            for (int i = N; i >= 0; i -= 2) {
-                printf("%d ", i);
-            }               
-        } else {
-             for (int i = 1; i <= N; i += 2) {
-                printf("%d ", i);
+int main() {
+
+    char input[9999];             // ตัวเเปรชื่อ input ชนิด char ค่าเป็น string จุได้ 100 เริ่ม 0 เช่น [0,1,2,3....,100] ตำแหน่ง 0 คือเริ่มต้น
+    int x = 0, isNumber = 1;     // ตัวแปรชื่อ x กำหนดมาเพื่อใช้เเทนแหน่งจุดเริ่มของอักษร (index) ในตัวแปร input เช่น x=0 คือ [x,1,2,3] 
+    int N = 0;               // ตัวแปรชื่อ isNumber กำหนดมาเพื่อใช้เช็คว่าอักษรในตัวแปร input เป็นตัวเลขทั้งหมดมั้ย ถ้าใช่ ค่าเป็น 1 ถ้าไม่ เปลี่ยนค่าเป็น 0
+                                 // ตัวแปรชื่อ score ชนิด int ค่าเป็น จำนวนเต็ม int มีค่าเท่ากับ 0
+    printf("Enter number : "); 
+    scanf("%s", input);          // scanf คือ รับค่าจากคีย์บอร์ด "%s" คือ แปลงค่าเป็น string ต่อด้วย " , input" คือ เอาค่าที่แปลงแล้วไปเก็บในตัวแปรชื่อ input
+
+    while (input[x] != '\0') {                  // ลูปไปจนกว่าจะถึงตัวจบของ string 
+        if (input[x] < '0' || input[x] > '9') { // เช็คตัวเลขใน ASCII (รหัสคอมพิวเตอร์) มีค่าระหว่าง '0' ถึง '9' เท่านั้น
+            isNumber = 0;                       // เมื่อเงื่อนไงเป็นจริง คือ ลูปเจอตัวที่ไม่ใช่ตัวเลข ค่า isNumber จะเท่ากับ 0 จากเดิมคือ 1
+            break;                              // จบการลูป เมื่อเจอตัวที่ไม่ใช่ตัวเลข
+        }
+        x++;                     // ค่า x เพิ่ม 1 คือเช็คตัวถัดไป เช่น x=0 [i,1,2,3] x++ = [0,x,2,3]
+    }
+
+        if (isNumber) {                  // เช็คว่า ถ้า isNumber ยังเป็น 1 แปลว่า user กรอกเลขล้วนๆ จะทำในส่วนของ if นี้
+            sscanf(input, "%d", &N);
+            if (N % 2 == 0) {
+                for (int i = N; i >= 0; i -= 2) {
+                    printf("%d ", i);
+                }               
+            } else {
+                for (int i = 1; i <= N; i += 2) {
+                    printf("%d ", i);
+                }
             }
+        } else{
+            printf("Please enter number only.\n");
         }
         return 0;
 }
@@ -33,7 +48,7 @@ int main()
 ## TEST CASE
 ### Input
 ```bash
-Enter value:
+Enter number:
 39
 ```
 ### Output
@@ -44,11 +59,20 @@ Series: 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39
 ## TEST CASE
 ### Input
 ```bash
-Enter value:
+Enter number:
 40
 ```
 ### Output
 ```bash
 Series: 40 38 36 34 32 30 28 26 24 22 20 18 16 14 12 10 8 6 4 2 0
+```
+### Input
+```bash
+Enter number:
+hello
+```
+### Output
+```bash
+Series: Please enter number only.
 ```
 
