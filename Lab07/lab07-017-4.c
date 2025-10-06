@@ -52,7 +52,7 @@ int main() {
             }
 
             if (guess == number) {                              //ถ้าเลขเดา ตรงกับ เลขสุ่ม ชนะ จบเกม
-                printf("CORRECT! You guessed it in %d tries : (HP = %d)\n", count, yourHP);
+                printf("CORRECT! You guessed it in %d tries :\nThe secret number is %d : (HP = %d)\n", count, number, yourHP);
                 break;
             } else if (guess < number) {                        //ถ้าเลขเดา น้อยกว่าเลขสุ่ม ให้ ระยะใบ้เลขน้อย แทนที่ด้วย เลขเดา บวก 1 เช่น 
                 printf("WRONG... secret number is HIGHER than %d : (HP = %d)\n", guess, yourHP);
@@ -63,7 +63,7 @@ int main() {
             }
 
             if (yourHP <= 0) {                                  //ถ้าคะแนนผู้เล่นหมด จบเกม
-                printf("Game Over! The secret number was %d\n", number);
+                printf("Game Over! The secret number is %d\n", number);
                 break;
             }
         }
