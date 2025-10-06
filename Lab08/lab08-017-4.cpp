@@ -5,6 +5,7 @@ int main() {
     int pos = 0;
     int yoe = 0;
     int pcy = 0;
+    int bsalary =0;
     int salary = 0;
     int ebonus = 0;
     int sbonus = 0;
@@ -40,20 +41,21 @@ int main() {
     ebonus = ebonus + sbonus;
 
     if(pos == 1){
-        salary = 20000;
+        bsalary = 20000;
         printf("Your position is Junior Programmer\n");
     }else if(pos == 2){
-        salary = 35000;
+        bsalary = 35000;
         printf("Your position is Mid-Level Programmer\n");
     }else if(pos == 3){
-        salary = 50000;
+        bsalary = 50000;
         printf("Your position is Senior Programmer\n");
     }
     
-    ebonus = salary * ebonus / 100;
-    salary = salary + ebonus;
+    ebonus = bsalary * ebonus / 100;
+    salary = bsalary + ebonus;
     
-    printf("Experience: %d years\nProjects Completed: %d\n",yoe,pcy);
+    printf("Base Salary: %d Baht\n",bsalary);
+    printf("Experience Bonus: %d Baht\nSpacial Bonus: %d Baht\n",ebonus,sbonus * bsalary / 100);
     printf("Your salary: %d Baht",salary);
     return 0;
 }
